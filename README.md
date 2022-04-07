@@ -19,6 +19,52 @@ Expression:  ((((()
 
 The number of parentheses:  1  2  3  4  5  5
 
+
+```C
+
+int main(int argc, char const *argv[])
+{
+    //I create 10 expressions to test
+    char * expressions[] = { 
+            "((())(()))" ,
+            "((((()",
+            "((((()))))",
+            "(((((()()(((()",
+            "()()()", 
+            "))))((()))", //not valid expression
+            "((()())(()()))",
+            "((()())()(())())", 
+            "()()())))",//not valid expression 
+            "[]{}([])",//not valid expression 
+    };
+    //get the length of the array expressions:
+    int n=(sizeof((expressions)) / sizeof(expressions[0]));
+    for(int i=0;i<n;i++)
+    {
+        Queue *q=(Queue *)malloc(sizeof(Queue));
+        init_queue(q);
+        //get the expression at i-th:
+        char *expression = expressions[i];
+        //call the parse_expression function
+        int ret=parse_expression(q,expression);
+        printf("%d.Expression: %s\n",i+1,expression);
+        if(ret==1)
+        {
+            printf("The  number  of  parentheses:");
+            parentheses_print(q);
+        }
+        else
+        {
+            printf("This expression is not valid\n");
+        }
+        free(q);
+    }    
+    return 0;
+}
+
+```
+
+
 # run main function of ParenthesisQueue.c, we have the results:
 
 ### Test case 1:

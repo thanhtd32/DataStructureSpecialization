@@ -197,7 +197,7 @@ int main(int argc, char const *argv[])
         char *expression = expressions[i];
         //call the parse_expression function
         int ret=parse_expression(q,expression);
-        printf("Expression: %s\n",expression);
+        printf("%d.Expression: %s\n",i+1,expression);
         if(ret==1)
         {
             printf("The  number  of  parentheses:");

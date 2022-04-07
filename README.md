@@ -87,31 +87,56 @@ This expression is not valid
 
 (A palindrome means a word, phrase, or sentence that is the same whether read from either front or back.  For example, “eye”, “madam”, “radar”, etc.  Here, of course, punctuation, spaces, and capital letters should be ignored.  Write a program that uses a deque to determine whether a given string is a palindrome or not.)
 
-# run main function of ParenthesisQueue.c, we have the results:
+# run main function of PalindromeQueue.c, we have the results:
 
 1.[eye] is a palindrome word.
+
 2.[madam] is a palindrome word.
+
 3.[radar] is a palindrome word.
+
 4.[School] is NOT a palindrome word.
+
 5.[Draw, O coward!] is a palindrome word.
+
 6.[Did Hannah see bees? Hannah did.] is a palindrome word.
+
 7.[redivider] is a palindrome word.
+
 8.[Cigar? Toss it in a can. It is so tragic.] is a palindrome word.
+
 9.[Dammit, I'm mad!] is a palindrome word.
+
 10.[civic] is a palindrome word.
+
 11.[Won't lovers revolt now?] is a palindrome word.
+
 12.[racecar] is a palindrome word.
+
 13.[Borrow or rob?] is a palindrome word.
+
 14.[hello] is NOT a palindrome word.
+
 15.[reviver] is a palindrome word.
+
 16.[thank] is NOT a palindrome word.
+
 17.[kayak] is a palindrome word.
+
 18.[Don't nod.] is a palindrome word.
+
 19.[Evil olive.] is a palindrome word.
+
 20.[Amore, Roma.] is a palindrome word.
+
 21.[Yo, banana boy!] is a palindrome word.
+
 22.[I did, did I?] is a palindrome word.
+
 23.[Anne, I vote more cars race Rome to Vienna.] is a palindrome word.
+
 24.[Ed, I saw Harpo Marx ram Oprah W. aside.] is a palindrome word.
+
 25.[Doc, note I dissent: a fast never prevents a fatness. I diet on cod.] is a palindrome word.
+
 26.[Dennis, Nell, Edna, Leon, Nedra, Anita, Rolf, Nora, Alice, Carol, Leo, Jane, Reed, Dena, Dale, Basil, Rae, Penny, Lana, Dave, Denny, Lena, Ida, Bernadette, Ben, Raay, Lila, Nina, Jo, Ira, Mara, Sara, Mario, Jan, Ina, Lily, Arne, Bette, Dan, Reba, Diane, Lynn, Ed, Eva, Dana, Lynne, Pearl, Isabel, Ada, Ned, Dee, Rena, Joel, Lora,C Cecil, Aaron, Flora, Tina, Arden, Noel, and Ellen sinned.] is a palindrome word.

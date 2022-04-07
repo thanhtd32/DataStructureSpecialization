@@ -7,7 +7,7 @@ Professor:Kil-Woong Jang (jangkw@kmou.ac.kr)
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
-
+#include <ctype.h>
 #define MAX_SIZE 1000
 
 //create char element type
@@ -112,34 +112,68 @@ int palindrome(Queue *q1,Queue *q2)
 {
 	while (!is_empty(q1) || !is_empty(q2))
 	{
-		if (dequeue(q1)!=dequeue(q2))
+        element e1=dequeue(q1);
+        element e2=dequeue(q2);
+		if (tolower(e1)!=tolower(e2))
 		{
 			return 0;
 		}
 	}
 	return 1;
 }
-int main(void)
+/*
+The pre_processing function uses to remove punctuation, spaces
+for the s string
+*/
+void pre_processing(char* s) {
+    char* d = s;
+    do {
+        while (*d == ' ' || *d == '.' || *d==','||
+               *d=='\''||*d=='\"'||*d==','||
+               *d=='?' || *d=='!' || *d==';' || *d==':') {
+            ++d;
+        }
+    } while (*s++ = *d++);
+}
+int main(int argc, char const *argv[])
 {
-    //I create some strings to test
     char * words[] = { 
             "eye" ,
             "madam",
             "radar",
+            "School",//not palindrome
+            "Draw, O coward!",
+            "Did Hannah see bees? Hannah did.",
             "redivider",
+            "Cigar? Toss it in a can. It is so tragic.",
+            "Dammit, I'm mad!",
             "civic", 
+            "Won't lovers revolt now?",
             "racecar", 
+            "Borrow or rob?",
             "hello",//not palindrome
             "reviver", 
             "thank",//not palindrome
             "kayak",
+            "Don't nod.",
+            "Evil olive.",
+            "Amore, Roma.",
+            "Yo, banana boy!",                        
+            "I did, did I?",
+            "Anne, I vote more cars race Rome to Vienna.",
+            "Ed, I saw Harpo Marx ram Oprah W. aside.",
+            "Doc, note I dissent: a fast never prevents a fatness. I diet on cod.",
+            "Dennis, Nell, Edna, Leon, Nedra, Anita, Rolf, Nora, Alice, Carol, Leo, Jane, Reed, Dena, Dale, Basil, Rae, Penny, Lana, Dave, Denny, Lena, Ida, Bernadette, Ben, Ray, Lila, Nina, Jo, Ira, Mara, Sara, Mario, Jan, Ina, Lily, Arne, Bette, Dan, Reba, Diane, Lynn, Ed, Eva, Dana, Lynne, Pearl, Isabel, Ada, Ned, Dee, Rena, Joel, Lora, Cecil, Aaron, Flora, Tina, Arden, Noel, and Ellen sinned."
     };
+    //We can get more test cases in the https://www.scarymommy.com/palindrome-sentences
     //get the length of the array words:
     int n=(sizeof((words)) / sizeof(words[0]));
     for(int i=0;i<n;i++)
     {
         //get the word at i-th:
-        char *word = words[i];
+        char *word=(char *)malloc(sizeof(char)*MAX_SIZE);
+        strcpy(word,words[i]);
+        pre_processing(word);
         //create q1 Queue object
         Queue *q1=(Queue *)malloc(sizeof(Queue));
         init_queue(q1);
@@ -153,15 +187,15 @@ int main(void)
         //call palindrome function to check if the word is palindrome or not
         if (palindrome(q1,q2)==1)
         {
-            printf("[%s] is a palindrome word.\n",word);
+            printf("%d.[%s] is a palindrome word.\n",i+1,words[i]);
         }
         else
         {
-            printf("[%s] is NOT a palindrome word.\n",word);
+            printf("%d.[%s] is NOT a palindrome word.\n",i+1,words[i]);
         }
+        free(word);
         free(q1);
         free(q2);
     }
-    
     return 0;
 }

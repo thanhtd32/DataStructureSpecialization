@@ -174,17 +174,18 @@ int parse_expression(Queue *q, char* expression)
 }
 int main(int argc, char const *argv[])
 {
+    //I create 10 expressions to test
     char * expressions[] = { 
             "((())(()))" ,
             "((((()",
             "((((()))))",
             "(((((()()(((()",
             "()()()", 
-            "))))((()))", 
+            "))))((()))", //not valid expression
             "((()())(()()))",
             "((()())()(())())", 
-            "()()())))", 
-            "[]{}([])", 
+            "()()())))",//not valid expression 
+            "[]{}([])",//not valid expression 
     };
     
     int x=0;

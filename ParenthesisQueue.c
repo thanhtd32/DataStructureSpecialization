@@ -188,7 +188,6 @@ int main(int argc, char const *argv[])
             "[]{}([])",//not valid expression 
     };
     
-    int x=0;
     int n=(sizeof((expressions)) / sizeof(expressions[0]));
     for(int i=0;i<n;i++)
     {

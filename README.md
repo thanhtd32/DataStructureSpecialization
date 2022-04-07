@@ -133,6 +133,8 @@ This expression is not valid
 
 (A palindrome means a word, phrase, or sentence that is the same whether read from either front or back.  For example, “eye”, “madam”, “radar”, etc.  Here, of course, punctuation, spaces, and capital letters should be ignored.  Write a program that uses a deque to determine whether a given string is a palindrome or not.)
 
+![alt text](https://raw.githubusercontent.com/thanhtd32/DataStructureSpecialization/main/palindrome.png)
+
 ```C
 
 int main(int argc, char const *argv[])

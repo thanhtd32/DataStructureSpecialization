@@ -105,7 +105,7 @@ void enqueue_all_reverse(Queue *q, char* str)
 	}
 }
 /*
-The palindrome function uses to check the string is palindrome or not
+The palindrome function uses deque to check the string is palindrome or not
 it returns 1 if the string is palinrome, otherwise is 0
 */
 int palindrome(Queue *q1,Queue *q2)

@@ -187,13 +187,15 @@ int main(int argc, char const *argv[])
             "()()())))",//not valid expression 
             "[]{}([])",//not valid expression 
     };
-    
+    //get the length of the array expressions:
     int n=(sizeof((expressions)) / sizeof(expressions[0]));
     for(int i=0;i<n;i++)
     {
         Queue *q=(Queue *)malloc(sizeof(Queue));
         init_queue(q);
+        //get the expression at i-th:
         char *expression = expressions[i];
+        //call the parse_expression function
         int ret=parse_expression(q,expression);
         printf("Expression: %s\n",expression);
         if(ret==1)

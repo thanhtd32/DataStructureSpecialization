@@ -7,6 +7,11 @@ Professor:Kil-Woong Jang (jangkw@kmou.ac.kr)
 #include <stdio.h>
 #include <stdlib.h>
 
+#include <stdint.h>
+#include <stddef.h>
+#include <assert.h>
+#include <stdbool.h>
+
 #define MAX_ELEMENT 200
 //define the element datatype 
 typedef struct {
@@ -184,6 +189,77 @@ void print_min_heap(HeapType *h)
     printf("\n");
 }
 /*
+Thí function use to find the width to print element
+*/
+int pow2i(int x) {
+    int w = 1;
+    while (x--) 
+    {
+        w *= 2;
+    }
+    return w;
+}
+/*
+This function use to write the min heap like a tree
+*/
+void display_min_heap_tree(HeapType *h) {
+    printf("\n");
+    int ldigits = 0;
+    int heap_depth = 0;
+    int pos = 0;
+    int depth = 0;
+    for (int i = 1; i <=h->heap_size; ++i) 
+    {
+        if (h->heap[i].key != -1) 
+        {
+            int len = snprintf(NULL, 0, "%d", h->heap[i].key);
+            if (ldigits < len) 
+            {
+                ldigits = len;
+            }
+        }        
+        if (pos == 0) 
+        {
+            heap_depth++;
+            pos = pow2i(depth++);
+        }
+        pos--;      
+    }
+    pos = 0;
+    depth = 0;
+    int offset = 3;
+    int max_width = pow2i(heap_depth) * (ldigits + offset);
+    for (int i = 1; i <=h->heap_size; ++i) 
+    {
+        bool first = pos == 0;
+        if (first) 
+        {
+            pos = pow2i(depth);
+            depth++;
+        }
+        int count = pow2i(depth);
+        int chunk = max_width / count;
+        int width = chunk + (first ? -chunk/2 : 0);
+        int spaces = width - ldigits;
+
+        printf("%*s", spaces, "");
+        if (h->heap[i].key <0) 
+        {
+            printf("%*s", ldigits, "-");
+        } 
+        else 
+        {
+            printf("%*d", ldigits, h->heap[i].key);
+        }
+        if (pos == 1) {
+            printf("\n");
+        }
+        pos--;
+    }
+    printf("\n");
+}
+
+/*
 this is a main function
 use the min heap
 */
@@ -207,7 +283,7 @@ int main(int argc, char const *argv[])
         {
             case 'h'://print all min heap
                 {
-                    print_min_heap(h);
+                    display_min_heap_tree(h);
                 }
                 break;
             case 'i'://delete element by index
@@ -220,7 +296,7 @@ int main(int argc, char const *argv[])
                    if(ret==1)
                     {
                         printf("delete index %d is successful\n",index);
-                        print_min_heap(h);
+                        display_min_heap_tree(h);
                     }
                     else
                     {
@@ -239,7 +315,7 @@ int main(int argc, char const *argv[])
                    if(ret==1)
                     {
                         printf("delete value %d is successful\n",value);
-                        print_min_heap(h);
+                        display_min_heap_tree(h);
                     }
                     else
                     {

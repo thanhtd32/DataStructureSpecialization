@@ -185,12 +185,11 @@ void print_min_heap(HeapType *h)
     printf("\n");
 }
 /*
-Thí function use to find the width to print element
+This function use to find the width to print element
 */
 int pow2i(int x) {
     int w = 1;
-    while (x--) 
-    {
+    while (x--){
         w *= 2;
     }
     return w;
@@ -198,8 +197,9 @@ int pow2i(int x) {
 /*
 This function use to write the min heap like a tree
 */
-void display_min_heap_tree(HeapType *h) {
-    printf("\n");
+void display_min_heap_tree(HeapType *h) 
+{
+    printf("\nMin Heap as a Tree:\n");
     int ldigits = 0;
     int heap_depth = 0;
     int pos = 0;
@@ -209,13 +209,11 @@ void display_min_heap_tree(HeapType *h) {
         if (h->heap[i].key != -1) 
         {
             int len = snprintf(NULL, 0, "%d", h->heap[i].key);
-            if (ldigits < len) 
-            {
+            if (ldigits < len){
                 ldigits = len;
             }
         }        
-        if (pos == 0) 
-        {
+        if (pos == 0){
             heap_depth++;
             pos = pow2i(depth++);
         }
@@ -252,6 +250,9 @@ void display_min_heap_tree(HeapType *h) {
         }
         pos--;
     }
+    printf("\n");
+    printf("\nMin Heap as a List:\n");
+    print_min_heap(h);
     printf("\n");
 }
 

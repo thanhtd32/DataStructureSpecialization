@@ -6,10 +6,6 @@ Professor:Kil-Woong Jang (jangkw@kmou.ac.kr)
 
 #include <stdio.h>
 #include <stdlib.h>
-
-#include <stdint.h>
-#include <stddef.h>
-#include <assert.h>
 #include <stdbool.h>
 
 #define MAX_ELEMENT 200

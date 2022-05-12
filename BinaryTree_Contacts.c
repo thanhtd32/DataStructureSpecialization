@@ -115,17 +115,18 @@ TreeNode * min_value_node(TreeNode * node)
 /*
 This function use to delete a contact from the BinaryTree
 name is contact name that we want to delete
+success is a variable to flag for deleting success or not
 */
-TreeNode * delete_node(TreeNode * root, char *name)
+TreeNode * delete_node(TreeNode * root, char *name,int *success)
 {
     if (root == NULL) return root;
     int ret=strcmpi(name,root->key->name);
     // If the name is less than the root, it is in the left subtree.
     if (ret<0)
-        root->left = delete_node(root->left, name);
+        root->left = delete_node(root->left, name,success);
     // If the name is greater than the root, it is in the right subtree.
     else if (ret>0)
-        root->right = delete_node(root->right, name);
+        root->right = delete_node(root->right, name,success);
     // If the name is the same as the root, just delete this node
     else 
     {
@@ -134,12 +135,14 @@ TreeNode * delete_node(TreeNode * root, char *name)
         {
             TreeNode * temp = root->right;
             free(root);
+            *success=1;
             return temp;
         }
         else if (root->right == NULL) 
         {
             TreeNode * temp = root->left;
             free(root);
+            *success=1;
             return temp;
         }
         // third case
@@ -147,7 +150,7 @@ TreeNode * delete_node(TreeNode * root, char *name)
         // Copies the successor node when traversing mid-foreign.
         root->key = temp->key;
         // Deleting successor nodes during traversal.
-        root->right = delete_node(root->right, temp->key->name);
+        root->right = delete_node(root->right, temp->key->name,success);
     }
     return root;
 }
@@ -244,10 +247,11 @@ int main(int argc, char const *argv[])
                 {
                     printf("Name of friend:");
                     char *name=input_string(MAX_SIZE_NAME);
-                    TreeNode *found= delete_node(root,name);
-                    if(found!=NULL)
+                    int success=0;
+                    root= delete_node(root,name,&success);
+                    if(success==1)
                     {
-                        printf("Delete contact [%s] successfully\n",found->key->name);
+                        printf("Delete contact [%s] successfully\n",name);
                     }
                     else
                     {

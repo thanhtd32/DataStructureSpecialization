@@ -9,8 +9,7 @@ Professor:Kil-Woong Jang (jangkw@kmou.ac.kr)
 #define MAX_SIZE 10
 #define SWAP(x, y, t) ( (t)=(x), (x)=(y), (y)=(t) )
 // partition method
-int partition(int list[], int left, int right)
-{
+int partition(int list[], int left, int right){
     int pivot, temp;
     int low,high;
     low = left; 
@@ -30,18 +29,15 @@ int partition(int list[], int left, int right)
     return high;
 }
 //quick sort method
-void quick_sort(int list[], int left, int right)
-{
-    if (left<right) 
-    {
+void quick_sort(int list[], int left, int right){
+    if (left<right){
         int q = partition(list, left, right);
         quick_sort(list, left, q - 1);
         quick_sort(list, q + 1, right);
     }
 }
 //test case
-int main(void)
-{
+int main(void){
     int n = 8;
     int list[]={67, 90, 57, 25, 84, 32, 73, 54};
     quick_sort(list,0, n-1);

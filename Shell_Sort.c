@@ -10,11 +10,9 @@ Professor:Kil-Woong Jang (jangkw@kmou.ac.kr)
 #define SWAP(x, y, t) ( (t)=(x), (x)=(y), (y)=(t) )
 // Insertion sort elements separated by gap
 // Sorting ranges from first to last
-void inc_insertion_sort(int list[], int first, int last, int gap)
-{
+void inc_insertion_sort(int list[], int first, int last, int gap){
     int i, j, key;
-    for(i=first+gap; i<=last; i=i+gap)
-    {
+    for(i=first+gap; i<=last; i=i+gap) {
         key = list[i];
         for(j=i-gap; j>=first && key<list[j];j=j-gap)
             list[j+gap]=list[j];
@@ -22,11 +20,10 @@ void inc_insertion_sort(int list[], int first, int last, int gap)
     }
 }
 //shell sort method
-void shell_sort( int list[], int n ) // n = size
-{
+// n = size
+void shell_sort( int list[], int n ){
     int i, gap;
-    for( gap=n/2; gap>0; gap = gap/2 ) 
-    {
+    for( gap=n/2; gap>0; gap = gap/2 ) {
         if( (gap%2) == 0 ) 
             gap++;
         for(i=0;i<gap;i++) // The number of sublists is gap
@@ -34,8 +31,7 @@ void shell_sort( int list[], int n ) // n = size
     }
 }
 //test case
-int main(void)
-{
+int main(void){
     int n = 8;
     int list[]={67, 90, 57, 25, 84, 32, 73, 54};
     //call shell sort method
